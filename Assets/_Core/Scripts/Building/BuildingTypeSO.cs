@@ -8,4 +8,5 @@ public class BuildingTypeSO : ScriptableObject
    public string nameString;
    public Transform prefab;
    public Sprite sprite,selectedSprite;
+   public Vector2 constructionSize;
 }

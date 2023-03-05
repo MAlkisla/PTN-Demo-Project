@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class BuildingTypeSelectUI : MonoBehaviour
 {
     private Dictionary<BuildingTypeSO, Transform> _btnTransformDictionary;
+    //[SerializeField] private List<BuildingTypeSO> ignoreBuildingTypeList;
     public Transform btnTemplate;
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
         int index = 0;
         foreach (BuildingTypeSO buildingType in buildingTypeList.list)
         {
+            //if (ignoreBuildingTypeList.Contains(buildingType)) continue;
             Transform btnTransform = Instantiate(btnTemplate, transform);
             btnTransform.gameObject.SetActive(true);
             btnTransform.GetComponent<Image>().sprite = buildingType.sprite;
@@ -28,7 +30,13 @@ public class BuildingTypeSelectUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
+    {
+        BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
+        UpdateActiveBuildingTypeButton();
+    }
+
+    private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
     {
         UpdateActiveBuildingTypeButton();
     }

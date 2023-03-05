@@ -6,9 +6,15 @@ using UnityEngine;
 
 public class BuildingGhost : MonoBehaviour
 {
-    private GameObject _spriteGameObject;
+    public static BuildingGhost Instance { get; private set; }
+    public GameObject _spriteGameObject;
+  
     private void Awake()
     {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
         _spriteGameObject = transform.Find("sprite").gameObject;
         Hide();
     }

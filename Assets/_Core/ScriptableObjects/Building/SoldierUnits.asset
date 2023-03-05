@@ -16,3 +16,4 @@ MonoBehaviour:
   prefab: {fileID: 2213691209497970415, guid: 71f7b3cafbcf84041b7f321b68ec1780, type: 3}
   sprite: {fileID: 21300000, guid: b6045f9bb13e14afeae569dd0df4c6fd, type: 3}
   selectedSprite: {fileID: 21300000, guid: ac4145b1b57eb4d0ea77e3200a2eca99, type: 3}
+  constructionSize: {x: 1, y: 1}
