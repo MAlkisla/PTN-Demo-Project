@@ -15,3 +15,4 @@ MonoBehaviour:
   nameString: Barracks
   prefab: {fileID: 2537156266428632980, guid: 7b911d4ab7ee947aa9f9b42ad06dd61a, type: 3}
   sprite: {fileID: 21300000, guid: 938141dc75a524f4ba5b1887843c1090, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 9c700c6bfa4864e6a9c736426794ae4e, type: 3}
