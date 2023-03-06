@@ -5,76 +5,9 @@ using UnityEngine.Serialization;
 
 namespace _Core.Scripts
 {
-    // public class GridManager : MonoBehaviour
-    // {
-    //     public GameObject tilePrefab;   // The tile object to use in the grid
-    //     public int rows;                // The number of rows in the grid
-    //     public int columns;             // The number of columns in the grid
-    //     public float cellSize = 32f;    // The size of each cell in the grid
-    //     public Color tileColor1, tileColor2; // The second color to assign to the tiles
-    //
-    //     private GameObject[,] _grid;     // The 2D array to hold the tiles in the grid
-    //     private Transform _gridParent;   // The parent object for the grid
-    //
-    //     private void Start()
-    //     {
-    //         CreateGrid();
-    //         AdjustCamera();
-    //     }
-    //
-    //     private void CreateGrid()
-    //     {
-    //         // Create the grid parent object
-    //         _gridParent = new GameObject("Grid").transform;
-    //
-    //         _grid = new GameObject[rows, columns];
-    //
-    //         for (int row = 0; row < rows; row++)
-    //         {
-    //             for (int col = 0; col < columns; col++)
-    //             {
-    //                 GameObject tile = Instantiate(tilePrefab, _gridParent);  // Create a new tile object as a child of the grid parent object
-    //                 tile.transform.position = new Vector3(col * cellSize, row * cellSize, 0); // Position the tile in the grid
-    //
-    //                 // Set the color of the tile based on its position
-    //                 if ((row + col) % 2 == 0)
-    //                 {
-    //                     tile.GetComponent<Renderer>().material.color = tileColor1;
-    //                 }
-    //                 else
-    //                 {
-    //                     tile.GetComponent<Renderer>().material.color = tileColor2;
-    //                 }
-    //
-    //                 _grid[row, col] = tile;  // Add the tile to the grid array
-    //             }
-    //         }
-    //     }
-    //
-    //     private void AdjustCamera()
-    //     {
-    //         if (Camera.main == null) return;
-    //         Camera.main.orthographic = true; // Set the camera to use orthographic projection
-    //
-    //         // Get the screen resolution and calculate the aspect ratio
-    //         float screenAspect = (float)Screen.width / (float)Screen.height;
-    //
-    //         // Calculate the size of the camera's view based on the size of the grid and the screen resolution
-    //         float gridWidth = columns * cellSize - cellSize / 2;
-    //         float gridHeight = rows * cellSize - cellSize / 2;
-    //         float cameraHeight = Mathf.Max(gridWidth / screenAspect, gridHeight);
-    //         float cameraSize = cameraHeight / 2f;
-    //         Camera.main.orthographicSize = cameraSize;
-    //
-    //         // Position the camera to look at the center of the grid
-    //         Vector3 gridCenter = new Vector3(gridWidth / 2f, gridHeight / 2f, 0);
-    //         Camera.main.transform.position = gridCenter + new Vector3(0, 0, -10f);
-    //     }
-    // }
-
-
     public class GridManager : MonoBehaviour
     {
+        public static GridManager Instance { get; private set; }
         [SerializeField] private Tile tilePrefab;
         public float cellSize;
         [SerializeField] private int rows;
@@ -88,20 +21,13 @@ namespace _Core.Scripts
 
         private Transform _gridParent;
 
-
-        // #region Singleton
-        //
-        // private static GridManager m_Instance;
-        //
-        // public static GridManager Instance => m_Instance;
-        //
-        //
-        // private void Awake()
-        // {
-        //     m_Instance = this;
-        // }
-        //
-        // #endregion
+        private void Awake()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+        }
 
         private void Start()
         {
@@ -138,71 +64,69 @@ namespace _Core.Scripts
             return GetTile(xIndex, yIndex);
         }
 
-        public Tile GetClosestTile(Vector2 pos)
-        {
-            var tile = GetTile(pos);
-            if (tile != null && tile.TileEmpty) return tile;
-            var tempCounterX = 0;
-            var tempCounterY = 0;
-            var tempCounterMinusX = 0;
-            var tempCounterMinusY = 0;
-            var squareOffset = 1;
-            var tempPos = pos - Vector2.right;
-            tile = GetTile(tempPos);
-            var maxSearchDepth = rows * columns;
-            var counter = 0;
-            while (tile == null || !tile.TileEmpty)
-            {
-                if (counter == maxSearchDepth)
-                {
-                    Debug.Log("path not found in range of search depth.");
-                    return null;
-                }
-
-                counter++;
-
-                if (tempCounterY < squareOffset)
-                {
-                    tempPos += Vector2.up;
-                    tempCounterY++;
-                }
-                else if (tempCounterX < squareOffset + 1)
-                {
-                    tempPos += Vector2.right;
-                    tempCounterX++;
-                }
-                else if (tempCounterMinusY < squareOffset + 1)
-                {
-                    tempPos -= Vector2.up;
-                    tempCounterMinusY++;
-                }
-                else if (tempCounterMinusX < squareOffset + 2)
-                {
-                    tempPos -= Vector2.right;
-                    tempCounterMinusX++;
-                }
-                else
-                {
-                    squareOffset += 2;
-                    tempCounterX = 0;
-                    tempCounterY = 0;
-                    tempCounterMinusY = 0;
-                    tempCounterMinusX = 0;
-                    tempPos = pos - Vector2.right * squareOffset;
-                }
-
-                tile = GetTile(tempPos);
-            }
-
-            return tile;
-        }
-
         private Vector2 GetLastTileCoordinates()
         {
             int lastRow = rows - 1;
             int lastCol = columns - 1;
             return new Vector2(lastRow * cellSize, lastCol * cellSize);
         }
+        public List<Tile> GetAdjacentTiles(int row, int column)
+        {
+            List<Tile> adjacentTiles = new List<Tile>();
+            row = (int)(BuildingManager.Instance.activeBuildingType.constructionSize.x * row);
+            column = (int)(BuildingManager.Instance.activeBuildingType.constructionSize.y * column);
+            // Check top tile
+            if (row > 0)
+            {
+                adjacentTiles.Add(_gridTiles[row - 1, column]);
+            }
+
+            // Check bottom tile
+            if (row < rows - 1)
+            {
+                adjacentTiles.Add(_gridTiles[row + 1, column]);
+            }
+
+            // Check left tile
+            if (column > 0)
+            {
+                adjacentTiles.Add(_gridTiles[row, column - 1]);
+            }
+
+            // Check right tile
+            if (column < columns - 1)
+            {
+                adjacentTiles.Add(_gridTiles[row, column + 1]);
+            }
+
+            // Check top left tile
+            if (row > 0 && column > 0)
+            {
+                adjacentTiles.Add(_gridTiles[row - 1, column - 1]);
+            }
+
+            // Check top right tile
+            if (row > 0 && column < columns - 1)
+            {
+                adjacentTiles.Add(_gridTiles[row - 1, column + 1]);
+            }
+
+            // Check bottom left tile
+            if (row < rows - 1 && column > 0)
+            {
+                adjacentTiles.Add(_gridTiles[row + 1, column - 1]);
+            }
+
+            // Check bottom right tile
+            if (row < rows - 1 && column < columns - 1)
+            {
+                adjacentTiles.Add(_gridTiles[row + 1, column + 1]);
+            }
+
+            return adjacentTiles;
+        }
+
+
 
         private void AdjustCamera()
         {

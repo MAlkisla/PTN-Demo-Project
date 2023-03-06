@@ -47,7 +47,7 @@ public class BuildingGhost : MonoBehaviour
         _spriteGameObject.SetActive(true);
         _spriteGameObject.GetComponent<SpriteRenderer>().sprite = ghostSprite;
     }
-    private void Hide()
+    public void Hide()
     {
         _spriteGameObject.SetActive(false);
     }

@@ -8,8 +8,9 @@ using UnityEngine.UI;
 public class BuildingTypeSelectUI : MonoBehaviour
 {
     private Dictionary<BuildingTypeSO, Transform> _btnTransformDictionary;
-    //[SerializeField] private List<BuildingTypeSO> ignoreBuildingTypeList;
     public Transform btnTemplate;
+    private Transform _activeBtn;
+    private Image oldImg;
     private void Awake()
     {
         BuildingTypeListSO buildingTypeList = Resources.Load<BuildingTypeListSO>(nameof(BuildingTypeListSO));
@@ -17,7 +18,6 @@ public class BuildingTypeSelectUI : MonoBehaviour
         int index = 0;
         foreach (BuildingTypeSO buildingType in buildingTypeList.list)
         {
-            //if (ignoreBuildingTypeList.Contains(buildingType)) continue;
             Transform btnTransform = Instantiate(btnTemplate, transform);
             btnTransform.gameObject.SetActive(true);
             btnTransform.GetComponent<Image>().sprite = buildingType.sprite;
@@ -41,18 +41,8 @@ public class BuildingTypeSelectUI : MonoBehaviour
         UpdateActiveBuildingTypeButton();
     }
 
-    private void UpdateActiveBuildingTypeButton()
+    public void UpdateActiveBuildingTypeButton()
     {
-        // foreach (BuildingTypeSO buildingType in _btnTransformDictionary.Keys)
-        // {
-        //     Transform btnTransform = _btnTransformDictionary[buildingType];
-        //     btnTransform.Find("Selected").gameObject.SetActive(false);
-        // }
-        //
-        // BuildingTypeSO actievBuildingType = BuildingManager.Instance.GetActievBuildingTypeButton();
-        // _btnTransformDictionary[actievBuildingType].Find("Selected").gameObject.SetActive(true);
-        // _btnTransformDictionary[actievBuildingType].Find("Selected").gameObject.GetComponent<Image>().sprite =
-        //     actievBuildingType.selectedSprite;
         foreach (BuildingTypeSO buildingType in _btnTransformDictionary.Keys)
         {
             Transform btnTransform = _btnTransformDictionary[buildingType];
@@ -65,6 +55,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
             Transform selectedBtnTransform = _btnTransformDictionary[activeBuildingType].Find("Selected");
             if (selectedBtnTransform != null)
             {
+                _activeBtn = selectedBtnTransform;
                 selectedBtnTransform.gameObject.SetActive(true);
                 selectedBtnTransform.GetComponent<Image>().sprite = activeBuildingType.selectedSprite;
             }

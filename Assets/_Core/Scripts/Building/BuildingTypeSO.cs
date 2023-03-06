@@ -10,4 +10,6 @@ public class BuildingTypeSO : ScriptableObject
    public Sprite sprite,selectedSprite;
    public Vector2 constructionSize;
    public int healthAmountMax;
+   public string specText;
+   public bool canProduceSoldier;
 }
