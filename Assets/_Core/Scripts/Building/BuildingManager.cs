@@ -15,6 +15,7 @@ namespace _Core.Scripts
         { 
             public BuildingTypeSO ActiveBuildingType;
         }
+        
         private Camera mainCamera;
         [SerializeField] private BuildingTypeListSO buildingTypeList;
         [SerializeField] private BuildingTypeSO activeBuildingType;

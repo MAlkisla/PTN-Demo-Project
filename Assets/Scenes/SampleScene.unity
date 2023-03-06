@@ -174,7 +174,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1080, y: 1920}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
@@ -311,8 +311,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 300, y: -50}
-  m_SizeDelta: {x: 600, y: 337.9}
+  m_AnchoredPosition: {x: 200, y: -90}
+  m_SizeDelta: {x: 400, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &157041196
 MonoBehaviour:
@@ -472,7 +472,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 485.1, y: 50}
+  m_SizeDelta: {x: 325, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &677409936
 MonoBehaviour:
@@ -521,15 +521,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
-  m_fontSizeBase: 72
+  m_fontSize: 48
+  m_fontSizeBase: 48
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -946,7 +946,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114948526457027268}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: InfiniteScroll, Assembly-CSharp
         m_MethodName: OnViewScroll
         m_Mode: 1
         m_Arguments:
@@ -969,9 +969,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d95e63f0ed24b341a69a4d29530180b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSpacing: 250
+  itemSpacing: 50
   horizontalMargin: 0
-  verticalMargin: 250
+  verticalMargin: 0.1
   horizontal: 0
   vertical: 1
 --- !u!114 &114860356733193560
@@ -1106,6 +1106,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 300, y: 850}
-  m_SizeDelta: {x: 600, y: 1700}
+  m_AnchoredPosition: {x: 200, y: 450}
+  m_SizeDelta: {x: 400, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -9,4 +9,5 @@ public class BuildingTypeSO : ScriptableObject
    public Transform prefab;
    public Sprite sprite,selectedSprite;
    public Vector2 constructionSize;
+   public int healthAmountMax;
 }
