@@ -36,14 +36,15 @@ public class GridBuildingSystem : MonoBehaviour {
     private Color originalColor;
     private Coroutine currentCoroutine;
 
+    public Testing _testing;
     public List<Vector2> openTile;
+    public List<Vector2> closedTile;
     private void Awake() {
         if (Instance == null)
         {
             Instance = this;
         }
-
-        grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int y) => new GridObject(g, x, y,false),false);
+        grid = new Grid<GridObject>(gridWidth, gridHeight, cellSize, new Vector3(0, 0, 0), (Grid<GridObject> g, int x, int y) => new GridObject(g, x, y));
         placedObjectTypeSO = null;
     }
 
@@ -54,7 +55,7 @@ public class GridBuildingSystem : MonoBehaviour {
         private int y;
         public PlacedObject_Done placedObject;
         
-        public GridObject(Grid<GridObject> grid, int x, int y, bool isBusy) {
+        public GridObject(Grid<GridObject> grid, int x, int y) {
             this.grid = grid;
             this.x = x;
             this.y = y;

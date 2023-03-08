@@ -14,25 +14,20 @@ public class Grid<TGridObject> {
     private float cellSize;
     private Vector3 originPosition;
     private TGridObject[,] gridArray;
-    private bool isBusy;
-    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject, bool isBusy) {
+
+    public Grid(int width, int height, float cellSize, Vector3 originPosition, Func<Grid<TGridObject>, int, int, TGridObject> createGridObject) {
         this.width = width;
         this.height = height;
         this.cellSize = cellSize;
         this.originPosition = originPosition;
-        this.isBusy = isBusy;
         
         gridArray = new TGridObject[width, height];
         for (int x = 0; x < gridArray.GetLength(0); x++) {
             for (int y = 0; y < gridArray.GetLength(1); y++) {
                 gridArray[x, y] = createGridObject(this, x, y);
                 GridBuildingSystem.Instance.openTile.Add(new Vector2(x,y));
+                //Pathfinding.Instance.GetNode(x, y).SetIsWalkable(Pathfinding.Instance.GetNode(x, y).isWalkable);
             }
-        }
-
-        foreach (var item in gridArray)
-        {
-            //Debug.Log(item.);
         }
        
         bool showDebug = true;
@@ -52,6 +47,8 @@ public class Grid<TGridObject> {
                     Vector2 tile = GridBuildingSystem.Instance.openTile[i];
                     if (tile == new Vector2(eventArgs.x, eventArgs.y)) {
                         GridBuildingSystem.Instance.openTile.RemoveAt(i);
+                        GridBuildingSystem.Instance.closedTile.Add(tile);
+                        Pathfinding.Instance.GetNode(eventArgs.x, eventArgs.y).SetIsWalkable(!Pathfinding.Instance.GetNode(eventArgs.x, eventArgs.y).isWalkable);
                         break;
                     }
                 }
@@ -131,4 +128,5 @@ public class Grid<TGridObject> {
         }
         
     }
+
 }
