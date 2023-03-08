@@ -6,7 +6,6 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public event EventHandler OnDamaged;
-    public event EventHandler OnDied;
     [SerializeField] private int healthAmountMax;
     private int healthAmount;
 
@@ -21,10 +20,6 @@ public class HealthSystem : MonoBehaviour
         healthAmount = Mathf.Clamp(healthAmount, 0, healthAmountMax);
         
         OnDamaged?.Invoke(this,EventArgs.Empty);
-        if (IsDead())
-        {
-            OnDied?.Invoke(this,EventArgs.Empty);
-        }
     }
 
     public bool IsDead()
