@@ -1,55 +1,53 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using _Core.Scripts;
 using UnityEngine;
 
-public class BuildingGhost : MonoBehaviour
-{
+public class BuildingGhost : MonoBehaviour {
+
     public static BuildingGhost Instance { get; private set; }
-    public GameObject _spriteGameObject;
-  
+    public Transform visual;
+    private PlacedObjectTypeSO placedObjectTypeSO;
+
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
-        _spriteGameObject = transform.Find("sprite").gameObject;
-        Hide();
     }
 
-    private void Start()
-    {
-        BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
+    private void Start() {
+        RefreshVisual();
+        GridBuildingSystem.Instance.OnSelectedChanged += Instance_OnSelectedChanged;
     }
 
-    private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
-    {
-        if ( e.ActiveBuildingType == null)
-        {
-            Hide();
+    private void Instance_OnSelectedChanged(object sender, System.EventArgs e) {
+        RefreshVisual();
+    }
+
+    private void LateUpdate() {
+        Vector3 targetPosition = GridBuildingSystem.Instance.GetMouseWorldSnappedPosition();
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * 15f);
+
+    }
+
+    private void RefreshVisual() {
+        if (visual != null) {
+            Destroy(visual.gameObject);
+            visual = null;
         }
-        else
-        {
-            Show(e.ActiveBuildingType.sprite);
+
+        PlacedObjectTypeSO placedObjectTypeSO = GridBuildingSystem.Instance.GetPlacedObjectTypeSO();
+
+        if (placedObjectTypeSO != null) {
+            visual = Instantiate(placedObjectTypeSO.visual, Vector3.zero, Quaternion.identity);
+            visual.parent = transform;
+            visual.localPosition = Vector3.zero;
+            visual.localEulerAngles = Vector3.zero;
+            // visual.localPosition = new Vector3((placedObjectTypeSO.width * GridBuildingSystem2D.Instance.cellSize)/2,(placedObjectTypeSO.height * GridBuildingSystem2D.Instance.cellSize)/2);
+            // visual.localScale =new Vector3((placedObjectTypeSO.width * GridBuildingSystem2D.Instance.cellSize),(placedObjectTypeSO.height * GridBuildingSystem2D.Instance.cellSize));
         }
-       
     }
 
-    private void Update()
-    {
-        transform.position = UtilsClass.GetMouseWorldPosition();
-    }
-
-    private void Show(Sprite ghostSprite)
-    {
-        _spriteGameObject.SetActive(true);
-        _spriteGameObject.GetComponent<SpriteRenderer>().sprite = ghostSprite;
-    }
-    public void Hide()
-    {
-        _spriteGameObject.SetActive(false);
-    }
-   
 }

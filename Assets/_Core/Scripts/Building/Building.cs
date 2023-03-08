@@ -1,18 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using _Core.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Building : MonoBehaviour
 {
-    private BuildingTypeSO _buildingTypeSo;
+    private PlacedObjectTypeSO _buildingTypeSo;
     private HealthSystem _healthSystem;
     private Transform _buildingSpecBtn;
+    
     private void Awake()
     {
-        _buildingTypeSo = GetComponent<BuildingTypeHolder>().buildingType;
+        //_buildingTypeSo = GetComponent<BuildingTypeHolder>().buildingType;
         _buildingSpecBtn = transform.Find("SpecButton");
         HideBuildingBtn();
     }
@@ -20,9 +20,9 @@ public class Building : MonoBehaviour
     void Start()
     {
         _healthSystem = GetComponent<HealthSystem>();
-        _healthSystem.SetHealthAmountMax(_buildingTypeSo.healthAmountMax,true);
+        //_healthSystem.SetHealthAmountMax(_buildingTypeSo.healthAmountMax,true);
         _healthSystem.OnDied += HealthSystem_OnDied;
-        BuildingManager.Instance.ShowSpecBtn += BuildingManager_ShowSpecBtn;
+        //BuildingManager.Instance.ShowSpecBtn += BuildingManager_ShowSpecBtn;
     }
     private void Update()
     {

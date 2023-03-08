@@ -13,7 +13,7 @@ public class BuildingSpecBtn : MonoBehaviour
    private void Awake()
    {
        building = gameObject.transform.parent.GetComponent<Building>();
-       BuildingTypeSO buildingType = building.GetComponent<BuildingTypeHolder>().buildingType;
+       PlacedObjectTypeSO buildingType = building.GetComponent<BuildingTypeHolder>().buildingType;
       _informationMenu = InformationMenu.Instance;
       transform.GetChild(0).GetComponent<Button>().onClick.AddListener((() =>
       {
@@ -22,6 +22,8 @@ public class BuildingSpecBtn : MonoBehaviour
             _informationMenu.buildingName.text = buildingType.nameString;
             _informationMenu.buildingSpecText.text = buildingType.specText;
             _informationMenu.soldierSpawnObj.SetActive(buildingType.canProduceSoldier);
+
+            SoldierManager.Instance.barracks = building;
       }));
    }
 }
