@@ -1,17 +1,22 @@
 using System.Collections.Generic;
+using _Core.Scripts.Managers;
+using _Core.Scripts.Soldiers;
 using UnityEngine;
 
-public class Barracks : Building
+namespace _Core.Scripts.Buildings
 {
-    public List<Spawnable> spawnables;
-    public Transform spawnPoint;
-
-    protected override void OnMouseDown()
+    public class Barracks : Building
     {
-        if (GameManager.Instance.CurrentState == GameState.Idle && !InputManager.Instance.MouseOverUI)
+        public List<Spawnable> spawnables;
+        public Transform spawnPoint;
+
+        protected override void OnMouseDown()
         {
-            base.OnMouseDown();
-            EventManager.SelectedBuildingForSpawning.Invoke(this);
+            if (GameManager.Instance.CurrentState == GameState.Idle && !InputManager.Instance.MouseOverUI)
+            {
+                base.OnMouseDown();
+                EventManager.SelectedBuildingForSpawning.Invoke(this);
+            }
         }
     }
 }

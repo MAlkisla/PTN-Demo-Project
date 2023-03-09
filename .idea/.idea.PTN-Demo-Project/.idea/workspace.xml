@@ -4,7 +4,42 @@
     <list default="true" id="50ffc1bb-5d6d-4551-9061-ce68c59028b2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PTN-Demo-Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PTN-Demo-Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scriptables/BuildingStats.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scriptables/BuildingStats.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/Barracks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/Barracks.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/CommandBase.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/CommandBase.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/PowerPlant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Prefabs/Buildings/PowerPlant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scriptables/BuildingsStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scriptables/BuildingsStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scriptables/SoldiersStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scriptables/SoldiersStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/Barracks.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/Barracks.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/Building.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/Building.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/BuildingStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/BuildingStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/GridObjectFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Buildings/GridObjectFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Grid/GridObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Grid/GridObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Grid/Tile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Grid/Tile.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/HealthBar.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/HealthBar.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/HealthSystem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/HealthSystem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Interfaces/IDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Interfaces/IDamage.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Interfaces/IHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Interfaces/IHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/EventManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/GridManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/GridManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/InputManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/PoolManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/PoolManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Managers/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelOneSoldier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelOneSoldier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelThreeSoldier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelThreeSoldier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelTwoSoldier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/LevelTwoSoldier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/Soldier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/Soldier.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/SoldierStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/SoldierStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/Spawnable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Soldiers/Spawnable.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/ContentScroll.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/ContentScroll.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/InformationTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/InformationTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/SpawnableTab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/UI/SpawnableTab.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/_Core/Scripts/Utils/Constants.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Core/Scripts/Utils/Constants.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +122,10 @@
       <updated>1678351855512</updated>
       <workItem from="1678351858458" duration="4607000" />
       <workItem from="1678367731224" duration="950000" />
+      <workItem from="1678376332847" duration="39000" />
+      <workItem from="1678380275013" duration="500000" />
+      <workItem from="1678380888524" duration="149000" />
+      <workItem from="1678381061718" duration="217000" />
     </task>
     <servers />
   </component>

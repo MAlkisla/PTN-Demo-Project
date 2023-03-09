@@ -1,14 +1,19 @@
+using _Core.Scripts.Managers;
+using _Core.Scripts.Utils;
 using UnityEngine;
 
-public class LevelThreeSoldier : Soldier
+namespace _Core.Scripts.Soldiers
 {
-    private void Start()
+    public class LevelThreeSoldier : Soldier
     {
-        var stats = GameManager.Instance.soldiersStats.GetStats(Constants.LevelThreeSoldierName);
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        objectName = stats.soldierName;
-        healthPoints = stats.healthPoints;
-        damagePoints = stats.damagePoints;
-        spriteRenderer.sprite = stats.soldierSprite;
+        private void Start()
+        {
+            var stats = GameManager.Instance.soldiersStats.GetStats(Constants.LevelThreeSoldierName);
+            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            objectName = stats.soldierName;
+            healthPoints = stats.healthPoints;
+            damagePoints = stats.damagePoints;
+            spriteRenderer.sprite = stats.soldierSprite;
+        }
     }
 }

@@ -1,70 +1,74 @@
 using System;
+using _Core.Scriptables;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+namespace _Core.Scripts.Managers
 {
-    #region Singleton
-
-    private static GameManager _instance;
-
-    public static GameManager Instance => _instance;
-
-    private void Awake()
+    public class GameManager : MonoBehaviour
     {
-        _instance = this;
-    }
+        #region Singleton
 
-    #endregion
+        private static GameManager _instance;
 
-    private GameState _currentState;
+        public static GameManager Instance => _instance;
 
-    public GameState CurrentState
-    {
-        get { return _currentState; }
-        set
+        private void Awake()
         {
-            _currentState = value;
-            switch (_currentState)
+            _instance = this;
+        }
+
+        #endregion
+
+        private GameState _currentState;
+
+        public GameState CurrentState
+        {
+            get { return _currentState; }
+            set
             {
-                case GameState.Idle:
-                    break;
-                case GameState.Building:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                _currentState = value;
+                switch (_currentState)
+                {
+                    case GameState.Idle:
+                        break;
+                    case GameState.Building:
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
             }
+        }
+
+        public BuildingsStats buildingsStats;
+        public SoldiersStats soldiersStats;
+
+        private void Start()
+        {
+            _currentState = GameState.Idle;
+            EventManager.SelectedBuildingForProduction.AddListener(StartBuilding);
+            EventManager.ProductionBuildingCompleted.AddListener(EndBuilding);
+        }
+
+        private void OnDestroy()
+        {
+            EventManager.SelectedBuildingForProduction.RemoveListener(StartBuilding);
+            EventManager.ProductionBuildingCompleted.RemoveListener(EndBuilding);
+        }
+
+        public void StartBuilding(string buildingName)
+        {
+            CurrentState = GameState.Building;
+        }
+
+        public void EndBuilding()
+        {
+            CurrentState = GameState.Idle;
         }
     }
 
-    public BuildingsStats buildingsStats;
-    public SoldiersStats soldiersStats;
-
-    private void Start()
+    public enum GameState
     {
-        _currentState = GameState.Idle;
-        EventManager.SelectedBuildingForProduction.AddListener(StartBuilding);
-        EventManager.ProductionBuildingCompleted.AddListener(EndBuilding);
+        Idle,
+        Building,
     }
-
-    private void OnDestroy()
-    {
-        EventManager.SelectedBuildingForProduction.RemoveListener(StartBuilding);
-        EventManager.ProductionBuildingCompleted.RemoveListener(EndBuilding);
-    }
-
-    public void StartBuilding(string buildingName)
-    {
-        CurrentState = GameState.Building;
-    }
-
-    public void EndBuilding()
-    {
-        CurrentState = GameState.Idle;
-    }
-}
-
-public enum GameState
-{
-    Idle,
-    Building,
 }

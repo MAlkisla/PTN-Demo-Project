@@ -1,21 +1,25 @@
 using System.Collections.Generic;
+using _Core.Scripts.Soldiers;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SoldierStats", menuName = "ScriptableObjects/SoldierStats", order = 1)]
-public class SoldiersStats : ScriptableObject
+namespace _Core.Scriptables
 {
-    [SerializeField] private List<SoldierStats> Soldiers;
-
-    public SoldierStats GetStats(object soldierName)
+    [CreateAssetMenu(fileName = "SoldierStats", menuName = "ScriptableObjects/SoldierStats", order = 1)]
+    public class SoldiersStats : ScriptableObject
     {
-        foreach (var soldierStats in Soldiers)
-        {
-            if (soldierStats.soldierName.Equals(soldierName))
-            {
-                return soldierStats;
-            }
-        }
+        [SerializeField] private List<SoldierStats> Soldiers;
 
-        return null;
+        public SoldierStats GetStats(object soldierName)
+        {
+            foreach (var soldierStats in Soldiers)
+            {
+                if (soldierStats.soldierName.Equals(soldierName))
+                {
+                    return soldierStats;
+                }
+            }
+
+            return null;
+        }
     }
 }

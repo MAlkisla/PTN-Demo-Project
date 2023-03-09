@@ -1,8 +1,12 @@
+using _Core.Scripts.Grid;
+using _Core.Scripts.Managers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Spawnable : GridObject
+namespace _Core.Scripts.Soldiers
 {
-    public Sprite spawnableSprite;
-    public PoolObjectType poolObjectType;
+    public class Spawnable : GridObject
+    {
+        public Sprite spawnableSprite;
+        public PoolObjectType poolObjectType;
+    }
 }

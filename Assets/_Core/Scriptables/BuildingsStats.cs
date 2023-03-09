@@ -1,21 +1,25 @@
 using System.Collections.Generic;
+using _Core.Scripts.Buildings;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BuildingStats", menuName = "ScriptableObjects/BuildingStats", order = 1)]
-public class BuildingsStats : ScriptableObject
+namespace _Core.Scriptables
 {
-    [SerializeField] private List<BuildingStats> Buildings;
-
-    public BuildingStats GetStats(object buildingName)
+    [CreateAssetMenu(fileName = "BuildingStats", menuName = "ScriptableObjects/BuildingStats", order = 1)]
+    public class BuildingsStats : ScriptableObject
     {
-        foreach (var buildingStats in Buildings)
-        {
-            if (buildingStats.buildingName.Equals(buildingName))
-            {
-                return buildingStats;
-            }
-        }
+        [SerializeField] private List<BuildingStats> Buildings;
 
-        return null;
+        public BuildingStats GetStats(object buildingName)
+        {
+            foreach (var buildingStats in Buildings)
+            {
+                if (buildingStats.buildingName.Equals(buildingName))
+                {
+                    return buildingStats;
+                }
+            }
+
+            return null;
+        }
     }
 }

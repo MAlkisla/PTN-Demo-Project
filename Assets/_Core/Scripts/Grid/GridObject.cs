@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public abstract class GridObject : MonoBehaviour
+namespace _Core.Scripts.Grid
 {
-    public string objectName;
-    public SpriteRenderer spriteRenderer;
-
-    protected virtual void OnMouseDown()
+    public abstract class GridObject : MonoBehaviour
     {
-        Debug.Log("object clicked: " + gameObject.name);
+        public string objectName;
+        public SpriteRenderer spriteRenderer;
+
+        protected virtual void OnMouseDown()
+        {
+            Debug.Log("object clicked: " + gameObject.name);
+        }
     }
 }
