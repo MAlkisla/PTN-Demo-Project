@@ -17,28 +17,22 @@ MonoBehaviour:
     healthPoints: 100
     buildingXSize: 4
     buildingYSize: 4
-    buildingInfo: 'Can spawn soldiers.
-
-      Good looking tents for soldiers to
-      drink and train.'
+    buildingInfo: 'A barrack is a building or group of buildings used to house soldiers
+      or other military personnel. '
     buildingSprite: {fileID: 21300000, guid: 938141dc75a524f4ba5b1887843c1090, type: 3}
     buildingPrefab: {fileID: 5842045479344537355, guid: 0adc51d5e0dc597448d19f638a8c9426, type: 3}
   - buildingName: PowerPlant
     healthPoints: 50
     buildingXSize: 2
     buildingYSize: 3
-    buildingInfo: 'Can generate energy.
-
-      Electricity is an important asset
-      for the town.'
+    buildingInfo: A power plant is a facility that converts various forms of energy,
+      such as fossil fuels, nuclear power, or renewable sources, into electricity.
     buildingSprite: {fileID: 21300000, guid: effa6cb18459549239c46e6ac3ff9448, type: 3}
     buildingPrefab: {fileID: 2235781624565071577, guid: 09e3691dfdbd10549b1e6d4e9b9ad4d1, type: 3}
   - buildingName: CommandBase
     healthPoints: 200
     buildingXSize: 5
     buildingYSize: 5
-    buildingInfo: 'Heart of the town.
-
-      Mayor sitting inside.'
+    buildingInfo: It is where the army is led and war decisions are taken.
     buildingSprite: {fileID: 21300000, guid: b6045f9bb13e14afeae569dd0df4c6fd, type: 3}
     buildingPrefab: {fileID: 3593236808945187868, guid: 08ec7b1992e8e4140936f9bf2a3d3763, type: 3}
