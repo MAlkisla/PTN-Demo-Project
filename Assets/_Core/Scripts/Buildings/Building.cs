@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Building : GridObject, IHealth
 {
     public int healthPoints { get; set; }
-
     private HealthSystem _healthSystem;
 
     public virtual void TakeDamage(int damageVal)
@@ -18,10 +15,10 @@ public class Building : GridObject, IHealth
             Die();
             return;
         }
-        
+
         StartCoroutine(TakeDamageFlashSprite());
     }
-    
+
     protected override void OnMouseDown()
     {
         if (GameManager.Instance.CurrentState == GameState.Idle && !InputManager.Instance.MouseOverUI)
@@ -42,7 +39,6 @@ public class Building : GridObject, IHealth
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         healthPoints = stats.healthPoints;
         spriteRenderer.sprite = stats.buildingSprite;
-       
     }
 
     private void OnMouseOver()
@@ -68,9 +64,10 @@ public class Building : GridObject, IHealth
                 tile.SetEmpty(true);
             }
         }
+
         Destroy(gameObject);
     }
-    
+
     IEnumerator TakeDamageFlashSprite()
     {
         var col = spriteRenderer.color;

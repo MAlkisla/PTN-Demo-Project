@@ -28,14 +28,14 @@ public class PoolManager : MonoBehaviour
 
     #region Singleton
 
-    private static PoolManager m_Instance;
+    private static PoolManager _instance;
 
-    public static PoolManager Instance => m_Instance;
+    public static PoolManager Instance => _instance;
 
 
     private void Awake()
     {
-        m_Instance = this;
+        _instance = this;
     }
 
     #endregion

@@ -6,13 +6,13 @@ public class InputManager : MonoBehaviour
 {
     #region Singleton
 
-    private static InputManager m_Instance;
+    private static InputManager _instance;
 
-    public static InputManager Instance => m_Instance;
+    public static InputManager Instance => _instance;
 
     private void Awake()
     {
-        m_Instance = this;
+        _instance = this;
     }
 
     #endregion
@@ -59,6 +59,7 @@ public class InputManager : MonoBehaviour
                 _dragging = false;
                 _startedDragging = false;
             }
+
             return;
         }
 
@@ -91,15 +92,13 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetAxisRaw("Mouse ScrollWheel") < 0)
         {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize+1f, 5f, 10f);
-            
-        }
-        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
-        {
-            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize-1f, 5f, 10f);
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize + 1f, 5f, 10f);
         }
 
-        //mouseUp check after building so no accidentally buildings created
+        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0)
+        {
+            Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - 1f, 5f, 10f);
+        }
 
         #endregion
 
@@ -125,7 +124,7 @@ public class InputManager : MonoBehaviour
         }
 
         #endregion
-        
+
         #region IdleInputHandle
 
         if (GameManager.Instance.CurrentState == GameState.Idle)
@@ -135,7 +134,7 @@ public class InputManager : MonoBehaviour
                 var intXPos = Mathf.RoundToInt(mouseWorldPos.x);
                 var intYPos = Mathf.RoundToInt(mouseWorldPos.y);
 
-                var tile = GridManager.Instance.GetTile(intXPos, intYPos); 
+                var tile = GridManager.Instance.GetTile(intXPos, intYPos);
                 if (tile && tile.tileEmpty)
                 {
                     UIManager.Instance.CloseInformationTab();
@@ -156,7 +155,7 @@ public class InputManager : MonoBehaviour
                 var intXPos = Mathf.RoundToInt(mouseWorldPos.x);
                 var intYPos = Mathf.RoundToInt(mouseWorldPos.y);
 
-                var tile = GridManager.Instance.GetTile(intXPos, intYPos); 
+                var tile = GridManager.Instance.GetTile(intXPos, intYPos);
                 if (tile && tile.tileEmpty)
                 {
                     _spawnerBuildingsSpawnPoint.position = tile.transform.position;
@@ -177,7 +176,7 @@ public class InputManager : MonoBehaviour
                 }
             }
         }
-        
+
         #endregion
 
         if (Input.GetMouseButtonUp(0))
@@ -208,16 +207,12 @@ public class InputManager : MonoBehaviour
 
     public void BuildBuilding(int intXPos, int intYPos)
     {
-        // using factory pattern here is unnecessary because of the scriptable system created, but here you go
-        // its simplified version of factory pattern where factory is static and objects are still
-        //on their scriptable stats object but in correct usage of factory pattern, you can store your
-        //factory objects on factory. 
         var gridObject = GridObjectFactory.GetGridObject(_selectedBuildingStats.buildingName);
         Instantiate(gridObject, new Vector2(intXPos, intYPos), Quaternion.identity);
         _buildingSpriteRenderer.sprite = null;
         _availableBGSpriteRenderer.color = Color.clear;
         _buildingSpriteRenderer.gameObject.SetActive(false);
-        
+
         for (int x = 0; x < _buildingXSize; x++)
         {
             for (int y = 0; y < _buildingYSize; y++)
@@ -226,14 +221,14 @@ public class InputManager : MonoBehaviour
                 tile.SetEmpty(false);
             }
         }
-        
+
         EventManager.ProductionBuildingCompleted.Invoke();
     }
 
     private void HighlightTiles(out bool isTilesEmpty, int intXPos, int intYPos)
     {
-        if(!_buildingSpriteRenderer.gameObject.activeSelf) _buildingSpriteRenderer.gameObject.SetActive(true);
-            isTilesEmpty = true;
+        if (!_buildingSpriteRenderer.gameObject.activeSelf) _buildingSpriteRenderer.gameObject.SetActive(true);
+        isTilesEmpty = true;
         for (int x = 0; x < _buildingXSize; x++)
         {
             for (int y = 0; y < _buildingYSize; y++)
@@ -244,6 +239,7 @@ public class InputManager : MonoBehaviour
                     isTilesEmpty = false;
                     break;
                 }
+
                 if (tile.tileEmpty) continue;
                 isTilesEmpty = false;
                 break;

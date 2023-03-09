@@ -8,13 +8,13 @@ public class UIManager : MonoBehaviour
 {
     #region Singleton
 
-    private static UIManager m_Instance;
+    private static UIManager _instance;
 
-    public static UIManager Instance => m_Instance;
+    public static UIManager Instance => _instance;
 
     private void Awake()
     {
-        m_Instance = this;
+        _instance = this;
     }
 
     #endregion

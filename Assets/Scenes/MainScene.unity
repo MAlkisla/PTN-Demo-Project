@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 342398868}
   - component: {fileID: 342398867}
   m_Layer: 5
-  m_Name: TownCenterButton (1)
+  m_Name: CommandBaseButton (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TownCenter
+          m_StringArgument: CommandBase
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &342398868
@@ -1084,7 +1084,7 @@ GameObject:
   - component: {fileID: 473291710}
   - component: {fileID: 473291709}
   m_Layer: 5
-  m_Name: TownCenterButton
+  m_Name: CommandBaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1163,7 +1163,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: TownCenter
+          m_StringArgument: CommandBase
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &473291710
@@ -4320,8 +4320,8 @@ MonoBehaviour:
   cellSize: 1
   _width: 32
   _height: 32
-  _indexZeroColor: {r: 0.8962264, g: 0.8581791, b: 0.8581791, a: 1}
-  _indexOneColor: {r: 0.8018868, g: 0.6846298, b: 0.6846298, a: 1}
+  tileColor1: {r: 0.8980392, g: 0.8784314, b: 1, a: 1}
+  tileColor2: {r: 1, g: 0.9490196, b: 0.9490196, a: 1}
 --- !u!1 &2040687671
 GameObject:
   m_ObjectHideFlags: 0

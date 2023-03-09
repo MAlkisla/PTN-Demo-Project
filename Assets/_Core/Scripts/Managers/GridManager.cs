@@ -11,14 +11,10 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int _height;
     public int width => _width;
     public int Height => _height;
-
-    [SerializeField] private Color _indexZeroColor;
-    [SerializeField] private Color _indexOneColor;
-
+    [SerializeField] private Color tileColor1;
+    [SerializeField] private Color tileColor2;
     private Tile[,] _gridTiles;
-
     private Transform _gridParent;
-
     private List<Tile> openList;
     private List<Tile> closedList;
 
@@ -27,14 +23,14 @@ public class GridManager : MonoBehaviour
 
     #region Singleton
 
-    private static GridManager m_Instance;
+    private static GridManager _instance;
 
-    public static GridManager Instance => m_Instance;
+    public static GridManager Instance => _instance;
 
 
     private void Awake()
     {
-        m_Instance = this;
+        _instance = this;
     }
 
     #endregion
@@ -56,15 +52,13 @@ public class GridManager : MonoBehaviour
             {
                 var newTile = Instantiate(_tilePrefab, new Vector3(x * cellSize, y * cellSize, 1),
                     Quaternion.identity, _gridParent);
-                newTile.Init(x, y, (x + y) % 2 == 0 ? _indexZeroColor : _indexOneColor);
+                newTile.Init(x, y, (x + y) % 2 == 0 ? tileColor1 : tileColor2);
                 _gridTiles[x, y] = newTile;
             }
         }
 
         if (Camera.main != null)
-            Camera.main.transform.position =
-                new Vector3((_width * cellSize - cellSize) / 2f, (_height * cellSize - cellSize) / 2f,
-                    -10f); // set cam pos to middle of grid.
+            Camera.main.transform.position = new Vector3((_width * cellSize - cellSize) / 2f, (_height * cellSize - cellSize) / 2f, -10f);
     }
 
     public Tile GetTile(int x, int y)
@@ -99,7 +93,7 @@ public class GridManager : MonoBehaviour
         {
             if (counter == maxSearchDepth)
             {
-                Debug.Log("path not found in range of search depth.");
+                Debug.Log("No path found");
                 return null;
             }
             counter++;
@@ -133,7 +127,6 @@ public class GridManager : MonoBehaviour
                 tempCounterMinusX = 0;
             }
             tile = GetTile(tempPos);
-            
         }
         return tile;
     }
@@ -197,8 +190,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
-        
-        //out of nodes on openlist
         return null;
     }
 

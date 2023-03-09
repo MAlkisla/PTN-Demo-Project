@@ -11,10 +11,17 @@ public class Soldier : Spawnable, IHealth, IDamage
     public int damagePoints { get; set; }
     
     public float attackRate { get; set; }
+    private HealthSystem _healthSystem;
+    
+    private void Awake()
+    {
+        _healthSystem = GetComponent<HealthSystem>();
+    }
     
     public void TakeDamage(int damageVal)
     {
         healthPoints -= damageVal;
+        _healthSystem.Damage(damageVal);
         if (healthPoints <= 0)
         {
             Die();
@@ -132,9 +139,6 @@ public class Soldier : Spawnable, IHealth, IDamage
         onTile.SetEmpty(true);
         PoolManager.Instance.CoolObject(gameObject, PoolObjectType);
     }
-
-    
-
     IEnumerator TakeDamageFlashSprite()
     {
         var col = spriteRenderer.color;

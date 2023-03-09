@@ -9,9 +9,9 @@ public static class GridObjectFactory
             case Constants.BarracksBuildingName:
                 Debug.Log("Barracks selected");
                 return GameManager.Instance.buildingsStats.GetStats(Constants.BarracksBuildingName).buildingPrefab;
-            case Constants.TownCenterBuildingName:
-                Debug.Log("TownCenter selected");
-                return GameManager.Instance.buildingsStats.GetStats(Constants.TownCenterBuildingName).buildingPrefab;
+            case Constants.CommandBaseBuildingName:
+                Debug.Log("CommandBase selected");
+                return GameManager.Instance.buildingsStats.GetStats(Constants.CommandBaseBuildingName).buildingPrefab;
             case Constants.PowerPlantBuildingName:
                 Debug.Log("PowerPlant selected");
                 return GameManager.Instance.buildingsStats.GetStats(Constants.PowerPlantBuildingName).buildingPrefab;

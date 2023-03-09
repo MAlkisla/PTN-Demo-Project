@@ -1,18 +1,17 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     #region Singleton
 
-    private static GameManager m_Instance;
+    private static GameManager _instance;
 
-    public static GameManager Instance => m_Instance;
+    public static GameManager Instance => _instance;
 
     private void Awake()
     {
-        m_Instance = this;
+        _instance = this;
     }
 
     #endregion
@@ -21,10 +20,7 @@ public class GameManager : MonoBehaviour
 
     public GameState CurrentState
     {
-        get
-        {
-            return _currentState;
-        }
+        get { return _currentState; }
         set
         {
             _currentState = value;
